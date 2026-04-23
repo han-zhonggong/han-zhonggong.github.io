@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>MES/ERP/WMS模块功能</title>
+  <!-- 引入 Layui -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/layui/2.9.10/css/layui.css">
+  <script src="https://cdn.staticfile.org/layui/2.9.10/layui.js"></script>
+  <style>
+    /* 空白块样式 */
+    .box {
+      margin-top: 20px;
+      padding: 30px;
+      border: 1px solid #eee;
+      min-height: 150px;
+      display: none; /* 默认隐藏 */
+    }
+	
+	/**************************/
+    body { padding: 30px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+
+    /* 蓝色 */
+    .tab-blue .layui-this { background: #1E9FFF; color: #fff; }
+    .collapse-blue .layui-colla-title { background: #E6F7FF; color: #1E9FFF; }
+
+    /* 绿色 */
+    .tab-green .layui-this { background: #009688; color: #fff; }
+    .collapse-green .layui-colla-title { background: #E8FFF5; color: #009688; }
+
+    /* 橙色 */
+    .tab-orange .layui-this { background: #FF7D00; color: #fff; }
+    .collapse-orange .layui-colla-title { background: #FFF7E6; color: #FF7D00; }
+
+    /* 红色 */
+    .tab-red .layui-this { background: #FF5722; color: #fff; }
+    .collapse-red .layui-colla-title { background: #FFF0E6; color: #FF5722; }
+
+    /* 紫色 */
+    .tab-purple .layui-this { background: #9966CC; color: #fff; }
+    .collapse-purple .layui-colla-title { background: #F9F0FF; color: #9966CC; }
+
+    .layui-colla-content { padding: 15px; }
+	/**************************/
+	
+  </style>
+</head>
+<body class="layui-container" style="margin-top: 30px;">
+
+  <!-- 三个按钮 -->
+  <button class="layui-btn layui-btn-normal" onclick="showBox2()">ERP</button>
+  <button class="layui-btn" onclick="showBox1()">MES</button>
+  
+  <button class="layui-btn layui-btn-warm" onclick="showBox3()">WMS</button>
+
+  <!-- 空白块（3个） -->
+  <div class="box" id="box1">
+  <p style="color: blue; font-size: 10px;">MES</p>
+  
+<!-------------------------------------->  
+  <!-- 蓝色 -->
+  <div class="layui-tab tab-blue">
+    <ul class="layui-tab-title">
+      <li class="layui-this">基础数据</li>
+      <li>生产管理</li>
+	  <li>设备管理</li>
+	  <li>质量管理</li>
+	  <li>报表管理</li>
+	  <li>看板管理</li>
+    </ul>
+    <div class="layui-tab-content">
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">工厂建模</h2>
+            <div class="layui-colla-content layui-show">
+				<p>工厂：维护工厂信息，包含工厂编号、工厂名称，主要用于组织机构及数据权限管理； </p>
+				<p>车间：维护车间信息，包含工厂信息，车间编号、车间名称，主要用于组织机构及数据权限管理； </p>
+				<p>产线：维护产线信息，包含工厂信息、车间信息，产线编号、产线名称，主要用于组织机构及数据权限管理； </p>
+				<p>工位：维护产线信息，包含工厂信息、车间信息、产线信息，工位编号、工位名称，工位也可以直接挂在工厂或车间下，主要用于组织机构及数据权限管理； </p>
+				<p>往来单位：维护客户、供应商、运输单位的联系人、联系方式、联系地址等信息； </p>
+				<p>计量单位：仓储及生产模块的标准计量单位； </p>
+				<p>工作日历模板：定义了一周内每天的工作时间； </p>
+				<p>工作日历：定义了每天的工作时间； </p>
+				<p>物料：维护物料名称、物料编码、规格、型号、物料属性等； </p>
+				<p>物料工位关系：维护物料、工位、出库仓库、单次拉动量等信息； </p>
+				<p>保管组：主要用以维护物料的数据权限； </p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">工艺建模</h2>
+            <div class="layui-colla-content layui-show">
+				<p>损耗方案：应用场景，物料清单、产品BOM等； </p>
+				<p>工序：定义生产过程中的工序步骤清单； </p>
+				<p>技能项：定义了技能项清单； </p>
+				<p>排程工位约束条件：用以维护工位集合，应用场景排程； </p>
+				<p>工位技能项：定义了特殊工位需要的特殊技能，应用场景排程； </p>
+				<p>人员技能项：定义了人员具备什么技能，应用场景排程； </p>
+				<p>物料清单：为产品维护物料清单BOM构成，包括构成子料的编码、数量、单位等； </p>
+				<p>工艺路线：维护产品加工的工艺路线信息，设置不同的工序参数来适应不同生产模式； </p>
+				<p>产品工艺路线：将工艺路线、物料清单、产出清单、工艺参数、质检信息、工步等维护在一起； </p>
+				<p>产品工艺路线投料明细：查询产品BOM的投料明细； </p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">设备建模</h2>
+            <div class="layui-colla-content layui-show">
+				<p>设备分类：定义了设备分类清单； </p>
+				<p>设备：定义不同类型的设备清单； </p>
+				<p>故障描述：定义设备的通用故障清单； </p>
+				<p>原因分析：定义设备的常见原因清单； </p>
+				<p>处理方式：定义设备的常见处理方式； </p>
+				<p>设备保养计划：维护设备的保养清单及策略； </p>
+				<p>设备点检计划：维护设备的点检清单及策略； </p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">工装建模</h2>
+            <div class="layui-colla-content layui-show">
+				<p>工装分类：定义工装分类清单及工装属性，包含：工装、模具、量具、检具； </p>
+				<p>工装：定义不同属性类型的工装清单； </p>
+				<p>故障描述：定义工装的通用故障清单； </p>
+				<p>原因分析：定义工装的常见原因清单； </p>
+				<p>处理方式：定义工装的常见处理方式； </p>
+				<p>工装保养计划：维护工装的保养清单及策略； </p>
+				<p>工装点检计划：维护工装的点检清单及策略； </p>
+				<p>工装检审策略：维护工装的检审任务； </p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">打印机配置</h2>
+            <div class="layui-colla-content layui-show">
+				<p>打印机设置：设置网络打印机、打印机型号、打印参数、打印服务等； </p>
+				<p>打印引擎：维护打印方案所需要的数据源； </p>
+				<p>打印模板：维护打印方案所需的不同类型的打印模板清单； </p>
+				<p>打印方案：维护各个功能项的打印模板清单； </p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">系统管理</h2>
+            <div class="layui-colla-content layui-show">
+				<p>用户：定义系统登录用户、企业员工等； </p>
+				<p>角色：定义登录系统角色及对应的菜单、按钮、列表权限； </p>
+				<p>部门：定义企业组织架构； </p>
+				<p>数据权限授权：定义不同角色的数据权限； </p>
+				<p>删除拦截器配置：定义基础数据删除时的拦截判断； </p>
+				<p>数据权限配置：对需要添加数据权限的元数据进行配置； </p>
+            </div>
+          </div>		  
+        </div>
+      </div>
+	  
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">生产计划</h2>
+            <div class="layui-colla-content layui-show">
+				<p>工单：新增/导入时，管理产品工艺路线，生成工单，其包含返工工单、试制工单、量产工单。； </p>
+				<p>工单修改：对已下发生产计划进行修改； </p>
+				<p>工单拆分/合并：将一个工单按数量拆分为多个工单；或将多个相同物料的工单合并为一个工单； </p>
+				<p>工单关闭：对于未生产的工单可以做关闭，生产中的工单，做强制完工； </p>
+				<p>工单下发：根据工单的维护信息，可以直接下发，也可以排程后下发； </p>
+				<p>排程：将物料、设备、工装、人员、技能等作为约束条件，将工单做有限排程，并生成工序任务； </p>
+				<p>工单-工位需求计划：排程后产生工位(设备)占用计划，支持手工新增； </p>
+				<p>工单-工装需求计划：排程后产生工装占用计划，支持手工新增； </p>
+				<p>工单-人员需求计划：排程后产生人员占用计划，支持手工新增； </p>
+				<p>工单-物料需求计划：排程后产生物料占用计划，支持手工新增； </p>
+				<p>领料计划：工单下发后，产生的物料需求计划；根据此计划可以向线边库备料； </p>
+				<p>领料任务：为了控制向线边库备料节奏，根据领料计划生成领料任务； </p>
+				<p>巡线拉动需求：巡线员或现场工人，查看线边库库存低于安全库存时，主动扫码产生拉动； </p>
+				<p>工单进度查询：查看工单的执行进度； </p>
+				<p>工单原料需求与库存差异：查看工单的原料需求与库存差异； </p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">生产执行</h2>
+            <div class="layui-colla-content">
+				<p>流转卡打印：需要纸质流转单的，打印工序流转卡，工序流转卡带工单二维码； </p>
+				<p>任务指派：可以指派人员或工位，可以超量领料，按齐套超量领料，工序任务打印； </p>
+				<p>工序任务补打：可以进行工单任务补打、工序任务补打、流转卡补打； </p>
+				<p>任务：包含：工艺变更、时间变更、工序委外、按工单关闭、按任务关闭、派工详情查看； </p>
+				<p>产出计划：可以一序多产出，查看派工详情、查看报工详情、按工单关闭、按任务关闭； </p>
+				<p>报工：支持：工序交接，任务转移，投料、质检，工装绑定，扫码报工，按任务报工，参数录入，查看工步说明、按工单关闭、按任务关闭、报工； </p>
+				<p>报工审核：需要审核的报工记录，审核后才能流转到下一步； </p>
+				<p>报工记录查询：移动端或pc端报工后，产生的报工记录； </p>
+				<p>不良品处理查询：报工后产生的不合格品处理后产生的记录； </p>
+				<p>交接记录查询：上下序之间手工、自动交接产生的记录； </p>
+				<p>投料消耗查询：生产投料时，产生投料库存，报工后，按任务对应物料的单位用量扣料记录； </p>
+				<p>人员绩效查询：报工后，根据生产人，产生人员绩效； </p>
+				<p>设备绩效查询：报工后，根据当前工位对应设备产生设备绩效； </p>
+				<p>工装绩效查询：报工后，根据当前工位对应设备对应的工装产生工装绩效； </p>
+				<p>参数记录查询：生产过程中录入的设备参数、工艺参数等。； </p>
+				<p>生产包装查询：在库包装后，产生的包装记录； </p>
+				<p>退料记录查询：生产投料产生退料后，系统自动产生退料记录； </p>
+				<p>任务执行情况查询：查询工序任务的执行状态； </p>
+				<p>流转卡打印(app)：通过移动端，打印流转卡； </p>
+				<p>巡线拉动(app)：巡线员或现场工人，查看线边库库存低于安全库存时，主动扫码产生拉动； </p>
+				<p>任务指派(app)：通过移动端指派人员、工位； </p>
+				<p>报工(app)：可以通过web端报工，也可以通过pda端报工，pda端支持，多次报工，集中入库； </p>
+				<p>报工记录(app)：移动端查看报工情况； </p>
+				<p>不合格品处理(app)：此处指生产过程不合格后续流程处理； </p>
+				<p>报工审核(app)：需要审核的报工记录，审核后才能流转到下一步； </p>
+				<p>工序交接(app)：生产过程中，前后道工序之间的手工交接； </p>
+				<p>工艺变更(app)：直接变更当前工序任务； </p>
+				<p>临时任务(app)：扫描已有的报工二维码、或工序任务、或工单等，选择工序，完成报工，用以补报工、或工艺部准确； </p>
+				<p>生产包装(app)：记录生产产品包装箱号之间的关系，并支持打印包装箱号； </p>
+			</div>
+          </div>
+        </div>
+      </div>
+	  
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">设备管理</h2>
+            <div class="layui-colla-content layui-show">
+				<p>设备报修：在pc端设备报修提报，维护设备故障描述、上传附件； </p>
+				<p>设备维修：pc端设备维修，维护维修人、维修时间、处理方式及原因分析； </p>
+				<p>设备档案信息：查询设备履历，包含：设备绩效、维修记录、保养记录、点检记录、维修耗料和技术资料； </p>
+				<p>设备维修查询：设备维修后产生的维修记录； </p>
+				<p>设备维修耗料查询：设备维修后产生的维修耗料记录； </p>
+				<p>设备保养查询：设备保任务养执行后产生保养记录； </p>
+				<p>设备点检查询：设备点任务检执行后产生的点检记录； </p>
+				<p>设备标定查询：移动端设备标定操作后，产生设备标定记录； </p>
+				<p>保养(app)：根据系统生成的保养任务，逐项检查、操作，并拍照上传； </p>
+				<p>点检(app)：根据系统生成的点检任务，逐项检查、操作，并拍照上传； </p>
+				<p>报修(app)：移动端设备报修提报，维护设备故障描述、上传附件； </p>
+				<p>维修(app)：移动端设备维修，维护维修人、维修时间、处理方式及原因分析； </p>
+				<p>标定(app)：设备大修后，需要重新对其做寿命计算； </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">质量管理</h2>
+            <div class="layui-colla-content layui-show">
+				<p>质检任务； </p>
+				<p>可疑品管理； </p>
+				<p>NCR管理； </p>
+				<p>质检记录查询； </p>
+				<p>质检物料批次查询； </p>
+				<p>合格率分析； </p>
+				<p>缺陷分析； </p>
+				<p>质检任务执行(app)； </p>
+				<p>扫码质检(app)； </p>
+				<p>可疑品管理(app)； </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">报表管理</h2>
+            <div class="layui-colla-content layui-show">
+				<p>生产报表：生产进度查询、工单进度查询、订单进度查询、备料进度查询、生产日报查询、产量统计查询、生产在制查询、工单达成率查询、生产合格率查询； </p>
+            </div>
+          </div>
+        </div>
+      </div>	
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">看板管理</h2>
+            <div class="layui-colla-content layui-show">
+				<p>生产看板：生产进度看板、工单达成率看板、生产总览看板、车间生产看板； </p>
+            </div>
+          </div>
+        </div>
+      </div>	  
+	  
+    </div>
+  </div>
+<!-------------------------------------->     
+  
+  </div>
+  
+  <div class="box" id="box2">
+  <p style="color: blue; font-size: 10px;">ERP</p>
+ 
+<!-------------------------------------->  
+  <!-- 橙色 -->
+  <div class="layui-tab tab-orange">
+    <ul class="layui-tab-title">
+      <li class="layui-this">财务云</li>
+      <li>供应链云</li>
+	  <li>制造云</li>
+	  <li>质量云</li>
+	  <li>平台特性</li>
+	  <li>💴发票云</li>
+	  <li>银企云</li>	  
+    </ul>
+    <div class="layui-tab-content">
+	
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">总账</h2>
+            <div class="layui-colla-content layui-show">
+<p>以凭证处理为中心，进行账簿管理。</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">内部往来协同</h2>
+            <div class="layui-colla-content layui-show">
+<p>辅助集团内部总账往来科目发生额核对匹配</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">智能会计平台</h2>
+            <div class="layui-colla-content layui-show">
+<p>系统生成凭证，有效提高账务处理工作的质量和效率。</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">报表</h2>
+            <div class="layui-colla-content layui-show">
+<p>实现资产负债表、利润表、现金流量表三大报表</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">应收款管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>应收款确认、到期收款、收款核销、期末处理。应收款管理日常业务处理流程。</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">应付款管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>应付款管理日常业务处理流程。应付款确认、到期付款、付款核销、期末处理。</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">出纳管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>出纳人员收付、核算日常工作，提供出纳现金日报表、银行日报表查询。日常财务收款及付款的管理。
+登记现金及银行日记账，银行存款对账单、余额调节表管理。</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">票据管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>实现应收票据、应付票据开票、收票、结算、背书、贴现等功能</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">存货核算</h2>
+            <div class="layui-colla-content layui-show">
+<p>入库核算、出库核算、存货报表</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">产品成本核算</h2>
+            <div class="layui-colla-content layui-show">
+<p>实现产品实际成本的计算和分析，成本中心、成本项目等基础资料梳理设置、费用分配标准及费用分配标准设置、费用引入方案设置；产品成本核算流程梳理。</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">固定资产</h2>
+            <div class="layui-colla-content layui-show">
+<p>资产初始化/日常管理/折旧管理/资产盘点。</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">发票管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>采购发票和销售发票的入账处理。</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">合并报表</h2>
+            <div class="layui-colla-content layui-show">
+<p>基于会计核算体系，帮助集团企业构建和规范对外合并财务报告和对内管理报告体系，简单、快速地完成各子公司个别数的采集和调整、内部会计事项的自动抵消、多汇报口径合并报表的并行出具。</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">网上银行</h2>
+            <div class="layui-colla-content layui-show">
+<p>实现企业与银行之间的直连，通过网上银行完成支付功能</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+	  
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">采购管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>实现企业采购业务流程，采购申请→采购订单→采购收货→（采购入库）采购结算1、培训；2、制定初始化方案（发票、入库）；3、检查逻辑合法性；4、指导和总账核对</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">销售管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>实现企业销售业务流程，客户需求→销售订单→发货通知→（销售出库）销售结算1、培训；2、制定初始化方案（发票、入库）；3、检查逻辑合法性；4、指导和总账核对</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">信用管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>实现对客户信用政策，信用档案和信用控制的管理，实现对信用额度和信用天数的查询和管控</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">库存管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>实现企业日常库存单据管理；即时库存、收发明细表、汇总表等基本台账的查询培训</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">组织间结算</h2>
+            <div class="layui-colla-content layui-show">
+<p>实现企业内部销售以及跨组织领料业务流程，（分步式调拨单），组织间结算价目，组织间结算。</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">工程数据管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>1.对生产产品的物料清单进行管理，描述其BOM用途，成品率，父阶物料，子阶物料及用量，损耗率，发料控制等  2.BOM中物料的替代关系建立，替代率</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">生产管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>实现企业生产业务流程，生产订单→生产发料→生产汇报→生产入库 1、培训；2、制定初始化方案 ；3、检查逻辑合法性。</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">委外管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>实现企业委外业务流程，委外申请单→委外订单→委外发料→委外收货→（委外入库）委外结算         1、培训；2、制定初始化方案 ；3、检查逻辑合法性（数据正确性由客户自己负责）；</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">计划管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>提供企业集中计划和协同计划多组织计划模式，实现企业物料需求计划；计划体系的流程梳理及计划方案的制订，包含生产计划、物料需求计划，计划基于无限产能，不包含生产排程业务，仅限单一业态的制造业务，多业态需另行评估。</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">质量管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>包含来料检验、产品检验、库存检验、退货检验、发货检验；基于电脑端记录检验结果，以及不良品处理或MRB，不包括一些复杂质量统计分析或图表。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">多组织</h2>
+            <div class="layui-colla-content layui-show">
+<p>组织及组织关系设定、组织业务关系设定</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">业务监控平台</h2>
+            <div class="layui-colla-content layui-show">
+<p>通过预警机制，实现企业对业务监控和异常预警通知的需求</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">工作流运行平台</h2>
+            <div class="layui-colla-content layui-show">
+<p>基于系统单据配置单据审批流程。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">收票服务</h2>
+            <div class="layui-colla-content layui-show">
+<p>进项电子发票的收票入账校验。</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">开票服务</h2>
+            <div class="layui-colla-content layui-show">
+<p>集成电子税务局，开具电子发票。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">支付与查询</h2>
+            <div class="layui-colla-content layui-show">
+<p>对接网银付款，查询收款和余额。</p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">电子回单</h2>
+            <div class="layui-colla-content layui-show">
+<p>匹配电子回单。</p>
+            </div>
+          </div>
+        </div>
+      </div>	  
+	  
+    </div>
+  </div>  
+<!-------------------------------------->     
+  
+  </div>
+  
+  
+  <div class="box" id="box3">
+  <p style="color: blue; font-size: 10px;">WMS</p>
+  
+<!-------------------------------------->  
+  <!-- 橙色 -->
+  <div class="layui-tab tab-orange">
+    <ul class="layui-tab-title">
+      <li class="layui-this">企业数据</li>
+      <li>销售发货</li>
+	  <li>入库业务管理</li>
+	  <li>出库业务管理</li>
+	  <li>库内业务管理</li>
+	  <li>盘点业务管理</li>
+	  <li>报表管理</li>	  
+	  <li>看板管理</li>	  
+    </ul>
+    <div class="layui-tab-content">
+	
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">仓储建模</h2>
+            <div class="layui-colla-content layui-show">
+<p>工厂、 往来单位、 计量单位、 物料、 物料供应商关系、 物料客户关系、 物料工位关系、 保管组、 物料状态定义、 仓库定义、 库位类型定义、 物料库位类型关系、 库存报警设置、 </p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">打印配置</h2>
+            <div class="layui-colla-content layui-show">
+<p>打印机设置、 打印引擎、 打印模板、 打印方案、 </p>
+            </div>
+          </div>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">系统管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>用户、 角色、 部门、 数据权限授权、 删除拦截器配置、 数据权限配置、 </p>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+	  
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">销售发货</h2>
+            <div class="layui-colla-content layui-show">
+<p>销售订单、 发货计划、 装车单、 待发区备货(app)、 装车(app)、 销售订单执行情况查询、 </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">入库业务管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>入库订单、 入库标签补打、 收货、 入库任务、 无任务收货(app)、 无码收货(app)、 扫码收货(app)、 报检(app)、 入库确认(app)、 批量入库(app)、 入库查询(app)、 入库任务查询、 供应商批号管理、 </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">出库业务管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>出库订单、 出库任务、 快速出库、 出库任务(app)、 快速出库(app)、 出库查询(app)、 巡线备料(app)、 计划备料(app)、 领料备料(app)、 先进先出异常查询、 出库任务查询、 </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">库内业务管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>库存明细管理、 库存汇总查询、 库存初始化、 形态转换、 移库调拨、 不合格品管理、 入库退库、 出库退库、 入库退库(app)、 出库退库(app)、 库存查询(app)、 移库(app)、 整托移库(app)、 调拨(app)、 组托管理(app)、 二维码合并(app)、 二维码拆分(app)、 物料状态变更(app)、 限制客户变更(app)、 批号变更(app)、 批次变更(app)、 在库包装(app)、 批号变更查询、 物料状态变更查询、 限制客户变更查询、 二维码拆分查询、 二维码合并查询、 组托管理查询、 在库包装查询、 </p>
+            </div>
+          </div>
+
+		</div>
+      </div>
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">盘点业务管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>生成盘点计划、 盘点任务管理、 计划盘点(app)、 随机盘点(app)、 盘点差异处理、 盘点记录查询、 未盘点明细查询、 </p>
+            </div>
+          </div>
+		  
+        </div>
+      </div>
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">报表管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>报表管理、 </p>
+            </div>
+          </div>
+        </div>
+      </div>	
+
+      <div class="layui-tab-item layui-show">
+        <div class="layui-collapse collapse-blue" lay-accordion>
+          <div class="layui-colla-item">
+            <h2 class="layui-colla-title">看板管理</h2>
+            <div class="layui-colla-content layui-show">
+<p>看板管理、 </p>
+            </div>
+          </div>
+        </div>
+      </div>	  
+	  
+    </div>
+  </div>  
+<!-------------------------------------->   
+  
+  </div>
+
+<script>
+
+layui.use('element', function(){
+  var element = layui.element;
+});
+
+// 显示隐藏函数
+function showBox1() {
+  // 显示box1，隐藏其他
+  document.getElementById("box1").style.display = "block";
+  document.getElementById("box2").style.display = "none";
+  document.getElementById("box3").style.display = "none";
+}
+
+function showBox2() {
+  document.getElementById("box1").style.display = "none";
+  document.getElementById("box2").style.display = "block";
+  document.getElementById("box3").style.display = "none";
+}
+
+function showBox3() {
+  document.getElementById("box1").style.display = "none";
+  document.getElementById("box2").style.display = "none";
+  document.getElementById("box3").style.display = "block";
+}
+</script>
+</body>
+</html>
